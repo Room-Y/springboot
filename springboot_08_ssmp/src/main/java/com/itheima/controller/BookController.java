@@ -1,6 +1,7 @@
 package com.itheima.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.itheima.controller.utils.R;
 import com.itheima.domain.Book;
 import com.itheima.service.IBookService;
 import org.apache.ibatis.annotations.Mapper;
@@ -20,32 +21,48 @@ public class BookController {
     private IBookService bookService;
 
     @GetMapping
-    public List<Book> getAll(){
-        return bookService.list();
+    public R getAll(){
+        return new R(true, bookService.list());
     }
 
     @PostMapping
-    public Boolean save(@RequestBody Book book){
-        return bookService.save(book);
+    public R save(@RequestBody Book book) throws Exception {
+        if(book.getName().equals("123")){
+            throw new Exception();
+        }
+        return new R(bookService.save(book));
     }
 
     @PutMapping
-    public Boolean update(@RequestBody Book book){
-        return bookService.updateById(book);
+    public R update(@RequestBody Book book){
+        return new R(bookService.updateById(book));
     }
 
     @DeleteMapping("/{id}")
-    public Boolean delete(@PathVariable Integer id){
-        return bookService.removeById(id);
+    public R delete(@PathVariable Integer id){
+        return new R(bookService.removeById(id));
     }
 
     @GetMapping("/{id}")
-    public Book getById(@PathVariable Integer id){
-        return bookService.getById(id);
+    public R getById(@PathVariable Integer id){
+        return new R(true, bookService.getById(id));
     }
 
+//    @GetMapping("/{currentPage}/{pageSize}")
+//    public R getPage(@PathVariable int currentPage, @PathVariable int pageSize){
+//        IPage<Book> page = bookService.getPage(currentPage, pageSize);
+//        if(currentPage > page.getPages()){
+//            page = bookService.getPage((int)page.getPages(), pageSize);
+//        }
+//        return new R(true, page);
+//    }
+
     @GetMapping("/{currentPage}/{pageSize}")
-    public IPage<Book> getPage(@PathVariable int currentPage, @PathVariable int pageSize){
-        return bookService.getPage(currentPage, pageSize);
+    public R getPage(@PathVariable int currentPage, @PathVariable int pageSize, Book book){
+        IPage<Book> page = bookService.getPage(currentPage, pageSize, book);
+        if(currentPage > page.getPages()){
+            page = bookService.getPage((int)page.getPages(), pageSize, book);
+        }
+        return new R(true, page);
     }
 }
