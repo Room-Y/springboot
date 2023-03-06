@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -10,7 +11,12 @@
         <option value="$PROJECT_DIR$/springboot_07_druid/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_08_ssmp/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_09_config/pom.xml" />
-        <option value="$PROJECT_DIR$/springboot_10_profiles/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_12_hot_deploy/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_13_configuration/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_14_test/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_15_sql/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_16_redis/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_27_bean_init/pom.xml" />
       </list>
     </option>
   </component>

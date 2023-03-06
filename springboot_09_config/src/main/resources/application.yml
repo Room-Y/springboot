@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+logging:
+  group:
+    iservice: com.itheima
+
+  level:
+    root: debug
+    com.itheima.controller: debug
+    iservice: warn
